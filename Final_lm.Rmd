@@ -1,0 +1,301 @@
+---
+title: "final_lm"
+output: html_document
+date: "2024-03-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+library(caret)
+
+# Train and evaluate the linear regression model for total_energy_sum
+trainSet <- merge_subset
+testSet <- increased_temp_july_subset
+
+linear_model <- lm(total_energy_sum ~ bldg_id + 
+                    sum_heating +
+                    `Dry Bulb Temperature [°C]` +
+                    in.sqft +
+                    in.bedrooms+
+                     `Relative Humidity [%]` +
+                    `Wind Speed [m/s]`+ `Wind Direction [Deg]`, data = trainSet)
+
+predictions <- predict(linear_model, newdata = testSet)
+
+# Calculate R-squared
+r_squared <- summary(linear_model)$r.squared
+
+# Calculate accuracy
+accuracy <- cor(testSet$total_energy_sum, predictions)
+
+# Print R-squared and accuracy for total_energy_sum
+cat("Model: Total Energy Consumption\n")
+cat(paste("  R-squared:", round(r_squared, 4), "\n"))
+cat(paste("  Accuracy:", round(accuracy, 4), "\n\n"))
+```
+```{r}
+library(caret)
+
+# Train and evaluate the linear regression model for total_energy_sum
+trainSet <- merge_subset
+testSet <- increased_temp_july_subset
+
+linear_model <- lm(total_energy_sum ~ bldg_id + 
+                    sum_vac +
+                    `Dry Bulb Temperature [°C]` +
+                    in.sqft +
+                    in.bedrooms+
+                     `Relative Humidity [%]` +
+                    `Wind Speed [m/s]`+ `Wind Direction [Deg]`, data = trainSet)
+
+predictions <- predict(linear_model, newdata = testSet)
+
+# Calculate R-squared
+r_squared <- summary(linear_model)$r.squared
+
+# Calculate accuracy
+accuracy <- cor(testSet$total_energy_sum, predictions)
+
+# Print R-squared and accuracy for total_energy_sum
+cat("Model: Total Energy Consumption\n")
+cat(paste("  R-squared:", round(r_squared, 4), "\n"))
+cat(paste("  Accuracy:", round(accuracy, 4), "\n\n"))
+```
+```{r}
+library(caret)
+
+# Train and evaluate the linear regression model for out.electricity.pv.energy_consumption
+trainSet <- merge_subset
+testSet <- increased_temp_july_subset
+
+linear_model <- lm(out.electricity.pv.energy_consumption ~ bldg_id + 
+                    out.electricity.plug_loads.energy_consumption +
+                     out.electricity.ceiling_fan.energy_consumption +
+                    out.electricity.clothes_dryer.energy_consumption +
+                    out.electricity.clothes_washer.energy_consumption +
+                    out.electricity.cooling_fans_pumps.energy_consumption +
+                    out.electricity.cooling.energy_consumption +
+                    out.electricity.dishwasher.energy_consumption +
+                    out.electricity.freezer.energy_consumption +
+                    out.electricity.heating_fans_pumps.energy_consumption +
+                    out.electricity.heating_hp_bkup.energy_consumption +
+                    out.electricity.heating.energy_consumption +
+                    out.electricity.hot_tub_heater.energy_consumption +
+                    out.electricity.hot_tub_pump.energy_consumption +
+                    out.electricity.hot_water.energy_consumption +
+                    out.electricity.lighting_exterior.energy_consumption +
+                    out.electricity.lighting_garage.energy_consumption +
+                    out.electricity.lighting_interior.energy_consumption +
+                    out.electricity.mech_vent.energy_consumption +
+                    out.electricity.pool_heater.energy_consumption +
+                    out.electricity.pool_pump.energy_consumption +
+                    out.electricity.range_oven.energy_consumption +
+                    out.electricity.refrigerator.energy_consumption +
+                    out.electricity.well_pump.energy_consumption +
+                     in.pv_system_size +
+                     in.heating_fuel +
+                     in.has_pv +
+                     in.building_america_climate_zone +
+                    `Dry Bulb Temperature [°C]` +
+                    in.sqft +
+                    in.bedrooms+ `Relative Humidity [%]` +
+                    `Wind Speed [m/s]`+ `Wind Direction [Deg]`+in.roof_material + in.insulation_wall, data = trainSet)
+
+predictions <- predict(linear_model, newdata = testSet)
+
+# Calculate R-squared
+r_squared <- summary(linear_model)$r.squared
+
+# Calculate accuracy
+accuracy <- cor(testSet$out.electricity.pv.energy_consumption, predictions)
+
+# Print R-squared and accuracy for out.electricity.pv.energy_consumption
+cat("Model: PV Energy Consumption\n")
+cat(paste("  R-squared:", round(r_squared, 4), "\n"))
+cat(paste("  Accuracy:", round(accuracy, 4), "\n\n"))
+```
+
+
+
+```{r}
+library(caret)
+
+# Train and evaluate the linear regression model for total_energy_sum
+trainSet <- merge_subset
+testSet <- increased_temp_july_subset
+
+linear_model_total_energy <- lm(total_energy_sum ~ bldg_id + 
+                                  sum_heating +
+                                  `Dry Bulb Temperature [°C]` +
+                                  in.sqft +
+                                  in.bedrooms+
+                                  `Relative Humidity [%]` +
+                                  `Wind Speed [m/s]`+ `Wind Direction [Deg]`, data = trainSet)
+
+predictions_total_energy <- predict(linear_model_total_energy, newdata = testSet)
+
+# Calculate R-squared
+r_squared_total_energy <- summary(linear_model_total_energy)$r.squared
+
+# Calculate accuracy
+accuracy_total_energy <- cor(testSet$total_energy_sum, predictions_total_energy)
+
+# Print R-squared and accuracy for total_energy_sum
+cat("Model: Total Energy Consumption\n")
+cat(paste("  R-squared:", round(r_squared_total_energy, 4), "\n"))
+cat(paste("  Accuracy:", round(accuracy_total_energy, 4), "\n\n"))
+
+# Train and evaluate the linear regression model for out.electricity.pv.energy_consumption
+linear_model_pv_energy <- lm(out.electricity.pv.energy_consumption ~ bldg_id + 
+                               out.electricity.ceiling_fan.energy_consumption +
+                               out.electricity.clothes_dryer.energy_consumption +
+                               out.electricity.clothes_washer.energy_consumption +
+                               out.electricity.cooling_fans_pumps.energy_consumption +
+                               out.electricity.cooling.energy_consumption +
+                               out.electricity.dishwasher.energy_consumption +
+                               out.electricity.freezer.energy_consumption +
+                               out.electricity.heating_fans_pumps.energy_consumption +
+                               out.electricity.heating_hp_bkup.energy_consumption +
+                               out.electricity.heating.energy_consumption +
+                               out.electricity.hot_tub_heater.energy_consumption +
+                               out.electricity.hot_tub_pump.energy_consumption +
+                               out.electricity.hot_water.energy_consumption +
+                               out.electricity.lighting_exterior.energy_consumption +
+                               out.electricity.lighting_garage.energy_consumption +
+                               out.electricity.lighting_interior.energy_consumption +
+                               out.electricity.mech_vent.energy_consumption +
+                               out.electricity.plug_loads.energy_consumption +
+                               out.electricity.pool_heater.energy_consumption +
+                               out.electricity.pool_pump.energy_consumption +
+                               out.electricity.range_oven.energy_consumption +
+                               out.electricity.refrigerator.energy_consumption +
+                               out.electricity.well_pump.energy_consumption +
+                               in.pv_system_size +
+                               in.heating_fuel +
+                               in.has_pv +
+                               in.building_america_climate_zone +
+                               `Dry Bulb Temperature [°C]` +
+                               in.sqft +
+                               in.bedrooms+ `Relative Humidity [%]` +
+                               `Wind Speed [m/s]`+ `Wind Direction [Deg]`+in.roof_material + in.insulation_wall, data = trainSet)
+
+predictions_pv_energy <- predict(linear_model_pv_energy, newdata = testSet)
+
+# Calculate R-squared
+r_squared_pv_energy <- summary(linear_model_pv_energy)$r.squared
+
+# Calculate accuracy
+accuracy_pv_energy <- cor(testSet$out.electricity.pv.energy_consumption, predictions_pv_energy)
+
+# Print R-squared and accuracy for out.electricity.pv.energy_consumption
+cat("Model: PV Energy Consumption\n")
+cat(paste("  R-squared:", round(r_squared_pv_energy, 4), "\n"))
+cat(paste("  Accuracy:", round(accuracy_pv_energy, 4), "\n\n"))
+
+# Sum of predicted total_energy_sum
+total_energy_sum_predicted_sum <- sum(predictions_total_energy)
+
+# Sum of predicted out.electricity.pv.energy_consumption
+pv_energy_predicted_sum <- sum(predictions_pv_energy)
+
+# Print the sums
+cat("Sum of Predicted Total Energy Consumption:", round(total_energy_sum_predicted_sum, 4), "\n")
+cat("Sum of Predicted PV Energy Consumption:", round(pv_energy_predicted_sum, 4), "\n")
+
+```
+```{r}
+library(ggplot2)
+
+# Scatter plot for original July subset
+ggplot(july_subset, aes(x = `Dry Bulb Temperature [°C]`, y = out.electricity.pv.energy_consumption)) +
+  geom_line() +
+  labs(title = "Scatter Plot of PV Energy Consumption vs. Dry Bulb Temperature (Original July Subset)",
+       x = "Dry Bulb Temperature [°C]",
+       y = "PV Energy Consumption") +
+  theme_minimal()
+
+# Scatter plot for increased temperature July subset
+ggplot(increased_temp_july_subset, aes(x = Dry_Bulb_Temperature, y = out.electricity.pv.energy_consumption)) +
+  geom_line() +
+  labs(title = "Scatter Plot of PV Energy Consumption vs. Increased Dry Bulb Temperature (July Subset)",
+       x = "Increased Dry Bulb Temperature [°C]",
+       y = "PV Energy Consumption") +
+  theme_minimal()
+
+
+```
+```{r}
+# Load necessary libraries
+library(ggplot2)
+
+# Create histograms for sum_heating and sum_vac in the original July subset
+ggplot(july_subset, aes(x = sum_heating)) +
+  geom_histogram(binwidth = 0.1, fill = "skyblue", color = "black") +
+  labs(title = "Distribution of sum_heating in July Subset",
+       x = "sum_heating",
+       y = "Frequency") +
+  theme_minimal()
+
+ggplot(july_subset, aes(x = sum_vac)) +
+  geom_histogram(binwidth = 0.1, fill = "lightgreen", color = "black") +
+  labs(title = "Distribution of sum_vac in July Subset",
+       x = "sum_vac",
+       y = "Frequency") +
+  theme_minimal()
+
+# Create histograms for sum_heating and sum_vac in the increased temperature July subset
+ggplot(increased_temp_july_subset, aes(x = sum_heating)) +
+  geom_histogram(binwidth = 0.1, fill = "skyblue", color = "black") +
+  labs(title = "Distribution of sum_heating in Increased Temperature July Subset",
+       x = "sum_heating",
+       y = "Frequency") +
+  theme_minimal()
+
+ggplot(increased_temp_july_subset, aes(x = sum_vac)) +
+  geom_histogram(binwidth = 0.1, fill = "lightgreen", color = "black") +
+  labs(title = "Distribution of sum_vac in Increased Temperature July Subset",
+       x = "sum_vac",
+       y = "Frequency") +
+  theme_minimal()
+
+```
+```{r}
+# Calculate total energy consumption for ventilation and cooling
+ventilation_cooling <- rowSums(merge_subset[, c(6, 7, 19)], na.rm = TRUE)
+
+# Calculate total energy consumption for heating
+heating <- rowSums(merge_subset[, c(10, 11, 12)], na.rm = TRUE)
+
+# Group data by month
+merge_subset$month <- format(merge_subset$time, "%m")
+monthly_data <- aggregate(cbind(ventilation_cooling, heating) ~ month, data = merge_subset, FUN = sum, na.rm = TRUE)
+
+# Define seasons based on months
+seasons <- cut(as.numeric(monthly_data$month), breaks = c(0, 3, 6, 9, 12), labels = c("Winter", "Summer", "Rainy", "Winter"))
+
+# Plot
+plot(monthly_data$ventilation_cooling, type = "l", col = "blue", xlab = "Month", ylab = "Energy Consumption", 
+     main = "Energy Consumption by Ventilation/Cooling and Heating Systems", ylim = c(0, max(monthly_data$ventilation_cooling, monthly_data$heating)),
+     xaxt = "n")
+lines(monthly_data$heating, col = "red")
+legend("topright", legend = c("Ventilation/Cooling", "Heating"), col = c("blue", "red"), lty = 1)
+
+# Add x-axis labels with seasons
+axis(1, at = 1:length(monthly_data$month), labels = seasons)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

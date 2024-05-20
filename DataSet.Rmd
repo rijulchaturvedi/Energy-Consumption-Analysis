@@ -1,0 +1,587 @@
+---
+title: "Building_DS"
+output: html_document
+date: "2024-03-12"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+#loading data for different counties
+#4811  15437  29915  32902  37812 100907 102598 107360 147782 221369 242371 286643 350625 362705 380643
+#400108 402928 403923 465218 473719
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/4811.parquet"
+energy_usage1 <- arrow :: read_parquet(energy_usage_url)
+view(energy_usage1)
+```
+```{r}
+View(static_house$in.county_and_puma)
+```
+
+
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/15437.parquet"
+energy_usage2 <- arrow :: read_parquet(energy_usage_url)
+#view(energy_usage2)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/15437.parquet"
+energy_usage3 <- arrow :: read_parquet(energy_usage_url)
+#view(energy_usage3)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/29915.parquet"
+energy_usage4 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/32902.parquet"
+energy_usage5 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/37812.parquet"
+energy_usage6 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/100907.parquet"
+energy_usage7 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/102598.parquet"
+energy_usage8 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/107360.parquet"
+energy_usage9 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/147782.parquet"
+energy_usage10 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/221369.parquet"
+energy_usage11 <- arrow :: read_parquet(energy_usage_url)
+
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/242371.parquet"
+energy_usage12 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/286643.parquet"
+energy_usage13 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/350625.parquet"
+energy_usage14 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/362705.parquet"
+energy_usage15 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/380643.parquet"
+energy_usage16 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/400108.parquet"
+energy_usage17 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/402928.parquet"
+energy_usage18 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/403923.parquet"
+energy_usage19 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/465218.parquet"
+energy_usage20 <- arrow :: read_parquet(energy_usage_url)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/473719.parquet"
+energy_usage21 <- arrow :: read_parquet(energy_usage_url)
+#view(energy_usage21)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+data1 <- static_house[static_house$in.county == "G4500450",]
+#view(data1)
+#(data1$bldg_id)
+```
+```{r}
+library(httr)
+library(arrow)
+
+# List of building IDs
+building_ids <- c(581, 2765, 3754, 3926, 4990, 5081, 7370, 7510, 7632, 10741, 10861, 11967, 12449, 13458, 13637, 15112, 102468, 102987, 103401, 106252, 106531, 107760, 108393, 109205, 109226, 131560, 131771, 133832, 134454, 136594, 136827, 137383, 139044, 142730, 143832, 145496, 145597, 145761, 145861, 145955, 147472, 147497, 147554, 149236, 149827, 151086, 151772, 154137, 154859, 156931, 158148, 158767, 159156, 159185, 160451, 160457, 162033, 343696, 454013, 240384, 182172, 172279)
+
+# Initialize an empty list to store the extracted data frames
+energy_data_list <- list()
+
+# Iterate through building IDs
+for (building_id in building_ids) {
+  # Construct the URL for the building ID
+  url <- paste0("https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/", building_id, ".parquet")
+  
+  # Make the HTTP request
+  response <- GET(url)
+  
+  # Check if the request was successful
+  if (status_code(response) == 200) {
+    # Read the response content as a raw vector
+    response_raw <- content(response, as = "raw")
+    
+    # Read the raw content as a Parquet file
+    building_data <- arrow::read_parquet(response_raw)
+    
+    # Add a column for building ID to the data frame
+    building_data$bldg_id <- building_id
+    
+    # Append the data frame to the list
+    energy_data_list[[length(energy_data_list) + 1]] <- building_data
+  } else {
+    cat("Failed to fetch data for building ID:", building_id, "\n")
+  }
+}
+
+# Combine all data frames into a single data frame
+energy_data <- dplyr::bind_rows(energy_data_list)
+
+# Print the extracted data
+View(energy_data)
+```
+```{r}
+#data cleaning
+energy_data <- na.omit(energy_data)
+view(energy_data)
+```
+```{r}
+tail(energy_data$time)
+```
+```{r}
+# Load necessary libraries
+library(arrow)
+library(readr)
+library(dplyr)
+
+
+# Function to fetch and merge data for a specific building id
+fetch_and_merge_data <- function(building_id) {
+  # Construct the URL for energy data
+  energy_url <- paste0("https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/", building_id, ".parquet")
+  
+  # Fetch energy data
+  energy_data <- arrow::read_parquet(energy_url)
+  head(energy_data)
+  
+  # Construct the URL for weather data
+  weather_dat_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/weather/2023-weather-data/G4500570.csv"
+  
+  # Fetch weather data
+  weather_data <- read_csv(weather_dat_url)
+  head(weather_data)
+  # Merge energy and weather data
+  # Check unique values in the "time" column for both datasets
+  unique_energy_time <- unique(energy_data$time)
+  unique_weather_time <- unique(weather_data$date_time)
+
+# Check if there are any common values between the two sets of unique times
+common_times <- intersect(unique_energy_time, unique_weather_time)
+
+# Print the common times
+head(common_times)
+  merged_data <- merge(energy_data, weather_data, by = common_times, all.x = TRUE, all.y = TRUE)
+  return(merged_data)
+}
+
+# Building IDs for which data needs to be fetched and merged
+building_ids <- c(24906, 30656, 36100, 39232, 44100, 46211, 49858, 71895, 79032, 79583, 91285, 95304, 106558, 108625, 122367, 135925, 153323, 155233, 159477, 161958, 176692, 178932, 183878, 199125, 200188, 209727, 226786, 227397, 228885, 229800, 232717, 232730, 240695, 262029, 271856, 278519, 305274, 310114, 319705, 321387, 337839, 346457, 348916, 351926, 361374, 367177, 368203, 377198, 379847, 389279, 390682, 407799, 426625, 444471, 465908, 488195, 498901, 501657, 506643, 519021, 520214)
+
+# Fetch and merge data for each building ID
+merged_data_list <- lapply(building_ids, fetch_and_merge_data)
+
+
+# Combine all merged dataframes into one
+final_data <- bind_rows(merged_data_list)
+  #merged_data$bldg_id <- bldg_id
+
+
+# Print final data
+view(final_data)
+```
+```{r}
+# Load necessary libraries
+library(arrow)
+library(readr)
+library(dplyr)
+
+# Function to fetch and merge data for a specific building id
+fetch_and_merge_data <- function(building_id) {
+  # Construct the URL for energy data
+  energy_url <- paste0("https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/", building_id, ".parquet")
+  
+  # Fetch energy data
+  energy_data <- arrow::read_parquet(energy_url)
+  
+  # Construct the URL for weather data
+ weather_dat_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/weather/2023-weather-data/G4500570.csv"
+  
+  # Fetch weather data
+  weather_data <- read_csv(weather_dat_url)
+  
+  # Merge energy and weather data
+  merged_data <- merge(energy_data, weather_data, by.x = "time", by.y = "date_time", all.x = TRUE, all.y = TRUE)
+  
+  return(merged_data)
+}
+
+# Building IDs for which data needs to be fetched and merged
+building_ids <- c(24906, 30656, 36100, 39232, 44100, 46211, 49858, 71895, 79032, 79583, 91285, 95304, 106558, 108625, 122367, 135925, 153323, 155233, 159477, 161958, 176692, 178932, 183878, 199125, 200188, 209727, 226786, 227397, 228885, 229800, 232717, 232730, 240695, 262029, 271856, 278519, 305274, 310114, 319705, 321387, 337839, 346457, 348916, 351926, 361374, 367177, 368203, 377198, 379847, 389279, 390682, 407799, 426625, 444471, 465908, 488195, 498901, 501657, 506643, 519021, 520214)
+
+# Fetch and merge data for each building ID
+merged_data_list <- lapply(building_ids, fetch_and_merge_data)
+
+# Combine all merged dataframes into one
+final_data <- bind_rows(merged_data_list)
+
+# Print final data
+View(final_data)
+```
+```{r}
+sum(is.na(final_data))
+#final_data <- na.omit(final_data)
+```
+```{r}
+sum(is.na(final_data))
+```
+```{r}
+View(final_data)
+```
+```{r}
+#sorting data in ascending order based on time
+library(tidyverse)
+final_data %>% arrange(final_data,time)
+```
+```{r}
+final_data$building_id <- energy_data$bldg_id
+View(final_data)
+```
+```{r}
+# Load necessary libraries
+library(arrow)
+library(readr)
+library(dplyr)
+
+# Function to fetch and merge data for a specific building id
+fetch_and_merge_data <- function(building_id) {
+  # Construct the URL for energy data
+  energy_url <- paste0("https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/", building_id, ".parquet")
+  
+  # Fetch energy data
+  energy_data <- arrow::read_parquet(energy_url)
+  
+  # Construct the URL for weather data
+  weather_dat_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/weather/2023-weather-data/G4500570.csv"
+  
+  # Fetch weather data
+  weather_data <- read_csv(weather_dat_url)
+  
+  # Add a column for building ID to the energy data
+  energy_data$bldg_id <- building_id
+  
+  # Merge energy and weather data
+  merged_data <- merge(energy_data, weather_data, by.x = "time", by.y = "date_time", all.x = TRUE)
+  
+  return(merged_data)
+}
+
+# Building IDs for which data needs to be fetched and merged
+building_ids <- c(24906, 30656, 36100, 39232, 44100, 46211, 49858, 71895, 79032, 79583, 91285, 95304, 106558, 108625, 122367, 135925, 153323, 155233, 159477, 161958, 176692, 178932, 183878, 199125, 200188, 209727, 226786, 227397, 228885, 229800, 232717, 232730, 240695, 262029, 271856, 278519, 305274, 310114, 319705, 321387, 337839, 346457, 348916, 351926, 361374, 367177, 368203, 377198, 379847, 389279, 390682, 407799, 426625, 444471, 465908, 488195, 498901, 501657, 506643, 519021, 520214)
+
+# Fetch and merge data for each building ID
+merged_data_list <- lapply(building_ids, fetch_and_merge_data)
+
+# Combine all merged dataframes into one
+final_data <- bind_rows(merged_data_list)
+
+# Print final data
+View(final_data)
+```
+```{r}
+final_data <- merge(final_data, static_house, by.x  = "bldg_id", by.y = "bldg_id", all.x = TRUE, all.y = TRUE)
+```
+```{r}
+View(final_data)
+```
+```{r}
+# Load necessary libraries
+library(arrow)
+library(readr)
+library(dplyr)
+
+# Function to fetch and merge data for a specific building id
+fetch_and_merge_data <- function(building_id) {
+  # Construct the URL for energy data
+  energy_url <- paste0("https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/", building_id, ".parquet")
+  
+  # Fetch energy data
+  energy_data <- arrow::read_parquet(energy_url)
+  
+  # Construct the URL for weather data
+  weather_dat_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/weather/2023-weather-data/G4500570.csv"
+  
+  # Fetch weather data
+  weather_data <- read_csv(weather_dat_url)
+  
+  # Add a column for building ID to the energy data
+  energy_data$bldg_id <- building_id
+  
+  # Merge energy and weather data
+  merged_data <- merge(energy_data, weather_data, by.x = "time", by.y = "date_time", all.x = TRUE)
+  
+  return(merged_data)
+}
+
+# Building IDs for which data needs to be fetched and merged
+building_ids <- c(24906, 30656, 36100, 39232, 44100, 46211, 49858, 71895, 79032, 79583, 91285, 95304, 106558, 108625, 122367, 135925, 153323, 155233, 159477, 161958, 176692, 178932, 183878, 199125, 200188, 209727, 226786, 227397, 228885, 229800, 232717, 232730, 240695, 262029, 271856, 278519, 305274, 310114, 319705, 321387, 337839, 346457, 348916, 351926, 361374, 367177, 368203, 377198, 379847, 389279, 390682, 407799, 426625, 444471, 465908, 488195, 498901, 501657, 506643, 519021, 520214)
+
+# Fetch and merge data for each building ID
+merged_data_list <- lapply(building_ids, fetch_and_merge_data)
+
+# Combine all merged dataframes into one
+final_data <- bind_rows(merged_data_list)
+
+# Load static_house dataset
+#static_house <- read.csv("path/to/static_house.csv")  # Replace "path/to/static_house.csv" with the actual path to your file
+
+# Merge final_data with static_house, keeping only the rows where building ID exists in building_ids
+merged_final <- merge(final_data, static_house, by = "bldg_id", all.x = TRUE)
+
+# Print merged data
+View(merged_final)
+```
+
+```{r}
+
+```
+```{r}
+library(tidyverse)
+library(dplyr)
+# Building IDs
+building_ids <- c(24906, 30656, 36100, 39232, 44100, 46211, 49858, 71895, 79032, 79583, 
+                  91285, 95304, 106558, 108625, 122367, 135925, 153323, 155233, 159477, 
+                  161958, 176692, 178932, 183878, 199125, 200188, 209727, 226786, 227397, 
+                  228885, 229800, 232717, 232730, 240695, 262029, 271856, 278519, 305274, 
+                  310114, 319705, 321387, 337839, 346457, 348916, 351926, 361374, 367177, 
+                  368203, 377198, 379847, 389279, 390682, 407799, 426625, 444471, 465908, 
+                  488195, 498901, 501657, 506643, 519021, 520214)
+
+# Column Names
+column_names <- c("out.electricity.pv.energy_consumption", 
+                  "out.electricity.ceiling_fan.energy_consumption", 
+                  "out.electricity.clothes_dryer.energy_consumption", 
+                  "out.electricity.clothes_washer.energy_consumption",
+                  "out.electricity.cooling_fans_pumps.energy_consumption",
+                  "out.electricity.cooling.energy_consumption",
+                  "out.electricity.dishwasher.energy_consumption",
+                  "out.electricity.freezer.energy_consumption",
+                  "out.electricity.heating_fans_pumps.energy_consumption",
+                  "out.electricity.heating_hp_bkup.energy_consumption",
+                  "out.electricity.heating.energy_consumption",
+                  "out.electricity.hot_tub_heater.energy_consumption",
+                  "out.electricity.hot_tub_pump.energy_consumption",
+                  "out.electricity.hot_water.energy_consumption",
+                  "out.electricity.lighting_exterior.energy_consumption",
+                  "out.electricity.lighting_garage.energy_consumption",
+                  "out.electricity.lighting_interior.energy_consumption",
+                  "out.electricity.mech_vent.energy_consumption",
+                  "out.electricity.plug_loads.energy_consumption",
+                  "out.electricity.pool_heater.energy_consumption",
+                  "out.electricity.pool_pump.energy_consumption",
+                  "out.electricity.pv.energy_consumption",
+                  "out.electricity.range_oven.energy_consumption",
+                  "out.electricity.refrigerator.energy_consumption",
+                  "out.electricity.well_pump.energy_consumption",
+                  "out.fuel_oil.heating_hp_bkup.energy_consumption",
+                  "out.fuel_oil.heating.energy_consumption",
+                  "out.fuel_oil.hot_water.energy_consumption",
+                  "out.propane.clothes_dryer.energy_consumption",
+                  "out.propane.heating_hp_bkup.energy_consumption",
+                  "out.propane.heating.energy_consumption",
+                  "out.propane.hot_water.energy_consumption",
+                  "out.propane.range_oven.energy_consumption",
+                  "out.electricity.pv.energy_consumption")
+
+# Subset using the building IDs and column names
+subset1 <- subset(energy_data, 
+                         bldg_id %in% building_ids, 
+                         select = c("bldg_id", column_names))
+
+
+```
+
+
+```{r}
+subset2 <- subset(static_house, bldg_id %in% building_ids,
+                  select = c("bldg_id", "in.pv_system_size"))
+```
+```{r}
+view(subset2)
+```
+```{r}
+merge_subset <-merge(subset1, subset2, by = "bldg_id")
+view(merge_subset)
+```
+```{r}
+building_ids_nonzero_pv <- static_house$bldg_id[static_house$in.pv_system_size != "None"]
+print(building_ids_nonzero_pv)
+```
+```{r}
+energy_usage_url <- "https://intro-datascience.s3.us-east-2.amazonaws.com/SC-data/2023-houseData/121.parquet"
+energy_usagedf <- arrow :: read_parquet(energy_usage_url)
+view(energy_usagedf$out.electricity.pv.energy_consumption)
+```
+```{r}
+# Load necessary library
+library(dplyr)
+
+# Building IDs to fetch data for
+building_ids <- c(121, 17172, 17258, 43126, 43686, 51221, 51317, 51607, 62642, 72383, 
+                  82190, 83238, 83845, 90259, 122474, 124767, 131523, 141473, 141551, 
+                  153775, 170869, 172279, 172404, 182172, 191543, 240384, 240917, 
+                  262161, 262341, 280672, 336421, 340075, 343696, 355918, 357751, 
+                  362329, 365589, 381845, 389212, 412577, 440212, 454013, 500811, 
+                  502505, 535885)
+
+# Fetch data for the specified building IDs and 'in.county' column
+filtered_static_house <- static_house %>%
+  filter(bldg_id %in% building_ids) %>%
+  select(in.county)
+
+# Print the filtered dataframe
+view(filtered_static_house)
+```
+```{r}
+# Load necessary library
+library(dplyr)
+
+# Select only specified columns from static_house table
+selected_columns <- static_house %>%
+  select(bldg_id, in.county, in.pv_system_size)
+
+# Print the selected columns
+view(selected_columns)
+```
+```{r}
+# Load the dplyr package
+library(dplyr)
+
+# Building IDs to be checked
+building_ids_to_check <- c(581, 2765, 3754, 3926, 4990, 5081, 7370, 7510, 7632, 10741, 10861, 11967, 12449, 13458, 13637, 15112, 102468, 102987, 103401, 106252, 106531, 107760, 108393, 109205, 109226, 131560, 131771, 133832, 134454, 136594, 136827, 137383, 139044, 142730, 143832, 145496, 145597, 145761, 145861, 145955, 147472, 147497, 147554, 149236, 149827, 151086, 151772, 154137, 154859, 156931, 158148, 158767, 159156, 159185, 160451, 160457, 162033, 343696, 454013, 240384, 182172, 172279, 175959, 176175, 177429, 177469, 178336, 179350, 180358, 180942, 181460, 182170, 182172, 182232, 183800, 183828, 184079, 184115)
+
+# Filter the data to remove 'in.county' for the specified building IDs
+energy_data_filtered <- static_house %>%
+  filter(!bldg_id %in% building_ids_to_check)
+
+# Get geolocation for the specified building IDs
+geolocations <- static_house %>%
+  filter(bldg_id %in% building_ids_to_check) %>%
+  distinct(in.county, .keep_all = TRUE) %>%
+  select(in.county)
+
+# Find other building IDs within the same county
+building_ids_same_county <- energy_data_filtered %>%
+  filter(in.county %in% geolocations$in.county) %>%
+  distinct(bldg_id)
+
+# Filter the data for the building IDs within the same county
+energy_data_filtered_same_county <- energy_data_filtered %>%
+  filter(bldg_id %in% building_ids_same_county$bldg_id)
+
+# Count the number of non-'None' values in 'in.pv_system_size' for each building ID
+counts <- energy_data_filtered_same_county %>%
+  filter(in.pv_system_size != 'None' & !is.na(in.pv_system_size)) %>%
+  group_by(bldg_id) %>%
+  summarise(non_none_count = sum(in.pv_system_size != 'None'))
+
+# Print the counts
+view(counts)
+```
+
+```{r}
+library(dplyr)
+building_ids_to_check <- c(581, 2765, 3754, 3926, 4990, 5081, 7370, 7510, 7632, 10741, 10861, 11967, 12449, 13458, 13637, 15112, 102468, 102987, 103401, 106252, 106531, 107760, 108393, 109205, 109226, 131560, 131771, 133832, 134454, 136594, 136827, 137383, 139044, 142730, 143832, 145496, 145597, 145761, 145861, 145955, 147472, 147497, 147554, 149236, 149827, 151086, 151772, 154137, 154859, 156931, 158148, 158767, 159156, 159185, 160451, 160457, 162033, 343696, 454013, 240384, 182172, 172279, 175959, 176175, 177429, 177469, 178336, 179350, 180358, 180942, 181460, 182170, 182172, 182232, 183800, 183828, 184079, 184115)
+static_house_filtered <- static_house %>%
+  filter(bldg_id %in% building_ids_to_check) %>%
+  group_by(in.sqft)  # Grouping by square footage
+
+# Print the square feet area, number of bedrooms, and other columns for each building ID
+View(static_house_filtered[, c("bldg_id", "in.sqft", "in.bedrooms")])
+```
+
+```{r}
+# Install and load required packages
+install.packages("dplyr")
+library(dplyr)
+
+# Assuming static_house is your dataset
+
+# Group houses by in.county, in.sqft, and in.bedroom
+grouped_houses <- static_house %>%
+  group_by(in.county, in.sqft, in.bedrooms)
+
+# Now you can perform any operations you want on the grouped data
+# For example, if you want to summarize data or perform other calculations
+
+# Summarize the grouped data (mean sqft and number of houses in each group)
+summary <- grouped_houses %>%
+  summarise(mean_sqft = mean(in.sqft),
+            num_houses = n())
+
+# View the summary
+View(summary)
+
+```
+
